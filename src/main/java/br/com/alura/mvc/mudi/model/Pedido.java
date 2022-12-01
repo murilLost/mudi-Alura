@@ -3,7 +3,13 @@ package br.com.alura.mvc.mudi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+
+//@Entity
 public class Pedido {
+	
+	//@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//private Long id;
+	
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataEntrega;
@@ -47,5 +53,11 @@ public class Pedido {
 		this.descricao = descricao;
 	}
 	
+	@Override
+	public String toString() {
+		return "Pedido [nomeProduto=" + nomeProduto + ", valorNegociado=" + valorNegociado + ", dataEntrega="
+				+ dataEntrega + ", urlProduto=" + urlProduto + ", urlImagem=" + urlImagem + ", descricao=" + descricao
+				+ "]";
+	}
 	
 }

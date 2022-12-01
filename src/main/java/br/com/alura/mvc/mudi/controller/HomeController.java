@@ -3,17 +3,24 @@ package br.com.alura.mvc.mudi.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.repository.PedidoRepository;
 
 @Controller
 public class HomeController {
+	
+	//@Autowired
+	//private PedidoRepository pedidoRepository;
 
 	@GetMapping("/home")
-	public String home(Model model) {
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView("home");
 		Pedido pedido = new Pedido();
 		pedido.setNomeProduto("Monitor Gamer 24''");
 		pedido.setUrlImagem("https://images.kabum.com.br/produtos/fotos/168368/monitor-gamer-samsung-24-ips-75-hz-full-hd-freesync-hdmi-lf24t350fhlmzd_1667910573_g.jpg");
@@ -21,8 +28,11 @@ public class HomeController {
 		pedido.setDescricao("Tenha a melhor experiência de imagem com o Monitor Gamer 24'' Full Hd Série T350 Samsung Bivolt. A taxa de atualização de 75Hz oferece cenas mais fluidas. Seu momento de diversão não tem LAG ou efeito fantasma, quer você esteja assistindo a um vídeo ou jogando um jogo.\r\n");
 		
 		List<Pedido> pedidos = Arrays.asList(pedido);
-		model.addAttribute("pedidos", pedidos);
-		return "home";
+		
+		//List<Pedido> pedidos = pedidoRepository.findAll();
+		
+		mv.addObject("pedidos", pedidos);
+		return mv;
 	}
 	
 }
