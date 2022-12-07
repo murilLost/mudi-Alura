@@ -8,4 +8,6 @@ import br.com.alura.mvc.mudi.model.Pedido;
 //public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 public interface PedidoRepository{
 	
+	//List<Pedido> findByStatus(StatusPedido status);
+	
 }

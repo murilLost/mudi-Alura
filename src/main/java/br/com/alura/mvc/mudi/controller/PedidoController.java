@@ -1,5 +1,7 @@
 package br.com.alura.mvc.mudi.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.alura.mvc.mudi.dto.RequisicaoNovoPedido;
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.repository.Mock;
 import br.com.alura.mvc.mudi.repository.PedidoRepository;
 
 @Controller
@@ -32,10 +35,10 @@ public class PedidoController {
 		}
 		
 		Pedido pedido = requisicao.toPedido();
-		System.out.println(pedido.toString());
 		
+		Mock.pedidos.add(pedido);
 		//pedidoRepository.save(pedido);
 		
-		return "home";
+		return "redirect:/home";
 	}
 }
